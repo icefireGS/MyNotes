@@ -4,7 +4,7 @@ import com.example.mynotes.mvc.Model.NoteModel;
 import java.util.*;
 public class NoteController {
     private NoteModel mode;
-
+    boolean show=false;
 
     public NoteController()
     {
@@ -26,20 +26,21 @@ public class NoteController {
           return false;
       }
     }
-    public boolean show(onShowNoteListener listener)
+    public List<Note> show(onShowNoteListener listener)
     {
-        mode.showNotes();
+
+        List<Note> noteList=mode.showNotes();
         if(listener!=null)
         {
             listener.onComplete();
-            return true;
+            show=true;
         }
         else
         {
             listener.onError();
-            return false;
+            show=false;
         }
-
+          return noteList;
     }
     public boolean  delete(onDeleteNoteListener listener)
     {
