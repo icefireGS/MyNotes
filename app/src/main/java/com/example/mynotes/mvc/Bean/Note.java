@@ -1,4 +1,4 @@
-package com.example.mynotes.mvc.Model;
+package com.example.mynotes.mvc.Bean;
 
 import java.util.Date;
 
@@ -7,7 +7,7 @@ public class Note {
     private String content;//笔记内容
     private long time;//保存日期
 
-    public Note(String titlte, long time, String content)
+    public Note(String title, long time, String content)
     {
         this.title=title;
         this.time=time;
@@ -16,12 +16,12 @@ public class Note {
 
     public String getTitle()
     {
-        return this.titlte;
+        return this.title;
     }
 
     public void setTitle(String title)
     {
-        this.titlte=title;
+        this.title=title;
     }
 
     public String getContent()
