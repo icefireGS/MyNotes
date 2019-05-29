@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".mvc.View.NoteViewActivity"
+            android:label="@string/title_activity_note_view"></activity>
+        <activity
             android:name=".mvc.View.MainActivity"
-            android:label="@string/title_activity_main"></activity>
+            android:label="@string/title_activity_main" />
         <activity
             android:name=".mvc.View.HandlerActivity"
             android:label="@string/title_activity_handler" />

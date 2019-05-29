@@ -7,11 +7,12 @@ import android.widget.ListView;
 import com.example.mynotes.R;
 import com.example.mynotes.mvc.Adapter.noteslistAdapter;
 import com.example.mynotes.mvc.Bean.Note;
+import com.example.mynotes.mvc.Interface.MainViewCallBack;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements MainViewCallBack {
     private List<Note> notesList=new ArrayList<>();  //笔记列表
     private noteslistAdapter adapter;  //笔记列表项适配器
     private ListView notesView;   //笔记列表视窗
@@ -37,13 +38,9 @@ public class MainActivity extends Activity {
         notesView.setAdapter(adapter);
     }
 
-    //......
-    public class myBinder{
-        Note getNote(){
-            Note newNote=new Note();
 
-            return newNote;
-        }
+    @Override
+    public Note getDeleteNote() {
+        return null;
     }
-    //.......
 }

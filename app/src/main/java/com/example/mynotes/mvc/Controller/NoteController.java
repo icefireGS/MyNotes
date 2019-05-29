@@ -1,19 +1,26 @@
 package com.example.mynotes.mvc.Controller;
 import com.example.mynotes.mvc.Bean.Note;
+import com.example.mynotes.mvc.Interface.MainViewCallBack;
+import com.example.mynotes.mvc.Interface.NoteViewCallBack;
 import com.example.mynotes.mvc.Model.NoteModel;
 import java.util.*;
+
 public class NoteController {
+    private MainViewCallBack mc;
+    private NoteViewCallBack nc;
     private NoteModel mode;
     boolean show=false;
 
-    public NoteController()
+    public NoteController(MainViewCallBack mc, NoteViewCallBack nc)
     {
+        this.mc=mc;
+        this.nc=nc;
         mode=new NoteModel();
     }
+
     public boolean add(onAddNoteListener listener)
     {
-        myBinder binder=new myBinder();
-        Note newnote=binder.getNote();
+        Note newnote=nc.getNote();
      mode.addNote(newnote.getTitle(),newnote.getContent(),newnote.getTime());
       if(listener!=null)
       {
@@ -44,8 +51,7 @@ public class NoteController {
     }
     public boolean  delete(onDeleteNoteListener listener)
     {
-        myBinder binder=new myBinder();
-        Note newnote=binder.getNote();
+        Note newnote=mc.getDeleteNote();
         mode.deleteNote(newnote.getTitle());
         if(mode.showNotes().isEmpty())
         {
