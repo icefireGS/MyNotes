@@ -1,7 +1,5 @@
 package com.example.mynotes.mvc.Bean;
 
-import java.util.Date;
-
 public class Note {
     private String title;//笔记标题
     private String content;//笔记内容
@@ -12,6 +10,10 @@ public class Note {
         this.title=title;
         this.time=time;
         this.content=content;
+    }
+
+    public Note(){
+
     }
 
     public String getTitle()
