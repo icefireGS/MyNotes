@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import org.w3c.dom.Node;
+import com.example.mynotes.mvc.Bean.Note;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mvc.View.MainActivity">
+        <activity
+            android:name=".mvc.View.MainActivity"
+            android:label="@string/title_activity_main"></activity>
+        <activity
+            android:name=".mvc.View.HandlerActivity"
+            android:label="@string/title_activity_handler" />
+        <activity
+            android:name=".mvc.View.GuideActivity"
+            android:label="@string/title_activity_guide" />
+        <activity android:name=".mvc.View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
