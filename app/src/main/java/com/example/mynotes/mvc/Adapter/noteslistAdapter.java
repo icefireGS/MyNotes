@@ -38,7 +38,7 @@ public class noteslistAdapter extends ArrayAdapter {
             holder=(ViewHolder) view.getTag();
         }
 
-        SimpleDateFormat time = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        SimpleDateFormat time = new SimpleDateFormat("yyyy/MM/dd   HH:mm");
         String lasttime=time.format(item.getTime());
         holder.titleText.setText(item.getTitle());
         holder.dateText.setText(lasttime);

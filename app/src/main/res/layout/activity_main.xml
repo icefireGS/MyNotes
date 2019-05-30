@@ -2,24 +2,52 @@
 <com.qmuiteam.qmui.layout.QMUILinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/tools"
     android:background="@color/qmui_config_color_gray_9"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <com.qmuiteam.qmui.widget.QMUITopBar
         android:layout_width="match_parent"
         android:layout_height="?attr/qmui_topbar_height"
         app:qmui_topbar_bg_color="@color/qmui_config_color_gray_9"
-        app:qmui_topbar_need_separator="false"/>
+        app:qmui_topbar_need_separator="false">
+
+        <ImageButton
+            android:id="@+id/menulist"
+            android:layout_width="?attr/qmui_topbar_height"
+            android:layout_height="match_parent"
+            android:background="@color/qmui_config_color_gray_9"
+            android:src="@drawable/menu_list"
+            android:scaleType="centerInside"/>
+
+        <TextView
+            android:id="@+id/toptitle"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:text="全部笔记"
+            android:layout_toRightOf="@+id/menulist"/>
+
+        <ImageButton
+            android:id="@+id/rightlist"
+            android:layout_width="?attr/qmui_topbar_height"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/qmui_config_color_gray_9"
+            android:src="@drawable/right_list"
+            android:scaleType="centerInside"/>
+
+    </com.qmuiteam.qmui.widget.QMUITopBar>
 
 
     <com.qmuiteam.qmui.layout.QMUILinearLayout
         android:layout_height="?attr/qmui_list_item_height"
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:focusable="true"
         android:focusableInTouchMode="true">
 
@@ -34,9 +62,83 @@
 
     </com.qmuiteam.qmui.layout.QMUILinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/listnone"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="180dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/nonote"
+            android:visibility="invisible"/>
+
     <ListView
         android:id="@+id/noteslist"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?attr/qmui_topbar_height"></ListView>
+
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="75dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/fab_add"
+            app:fab_colorNormal="#409CFF"
+            app:fab_colorPressed="#1B88EE"
+            app:fab_colorRipple="#99FFFFFF"
+            />
+
+
+        <com.qmuiteam.qmui.layout.QMUILinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/qmui_topbar_height"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/shownotes"
+                android:layout_width="?attr/qmui_topbar_height"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/qmui_config_color_gray_9"
+                android:src="@drawable/notebook_focuse"
+                android:scaleType="centerInside"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/showclock"
+                android:layout_width="?attr/qmui_topbar_height"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/qmui_config_color_gray_9"
+                android:src="@drawable/clock_nomal"
+                android:scaleType="centerInside"/>
+
+        </LinearLayout>
+
+    </com.qmuiteam.qmui.layout.QMUILinearLayout>
+
+    </RelativeLayout>
 
 </com.qmuiteam.qmui.layout.QMUILinearLayout>

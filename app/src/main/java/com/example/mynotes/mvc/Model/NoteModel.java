@@ -2,6 +2,7 @@ package com.example.mynotes.mvc.Model;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.mynotes.mvc.Bean.Note;
@@ -20,18 +21,30 @@ public class NoteModel {
         db.execSQL(node_table);
     }
 
-    public void addNote(String title, String content, long time)//添加note
+    public boolean addNote(String title, String content, long time)//添加note
     {
-        ContentValues cValue= new ContentValues();
-        cValue.put("title",title);
-        cValue.put("time",time);
-        cValue.put("content",content);
-        db.insert("node_table",null,cValue);
+        try {
+            ContentValues cValue = new ContentValues();
+            cValue.put("title", title);
+            cValue.put("time", time);
+            cValue.put("content", content);
+            db.insert("node_table", null, cValue);
+        } catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
-    public void deleteNote(String title)//删除note
+    public boolean deleteNote(String title)//删除note
     {
-        db.delete("node_table","title=?",new String[]{title});
+        try {
+            db.delete("node_table", "title=?", new String[]{title});
+        } catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     public List<Note> showNotes()//将数据库的信息装入实体类加入列表
