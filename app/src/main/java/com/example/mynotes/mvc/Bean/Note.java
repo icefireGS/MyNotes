@@ -1,6 +1,8 @@
 package com.example.mynotes.mvc.Bean;
 
-public class Note {
+import java.io.Serializable;
+
+public class Note implements Serializable {
     private String title;//笔记标题
     private String content;//笔记内容
     private long time;//保存日期

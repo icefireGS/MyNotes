@@ -1,16 +1,16 @@
 package com.example.mynotes.mvc.Controller;
 
 import com.example.mynotes.mvc.Bean.Note;
+import com.example.mynotes.mvc.Model.NoteDataBaseHelper;
 import com.example.mynotes.mvc.Model.NoteModel;
 import java.util.*;
 
 public class NoteController {
     private NoteModel mode;
-    boolean show=false;
 
-    public NoteController()
+    public NoteController(NoteDataBaseHelper dbHelper)
     {
-        mode=new NoteModel();
+        mode=new NoteModel(dbHelper);
     }
 
     public boolean AddControl(Note addnote)
@@ -18,7 +18,7 @@ public class NoteController {
         return mode.addNote(addnote.getTitle(),addnote.getContent(),addnote.getTime());
     }
 
-    public List<Note> show()
+    public List<Note> showNotes()
     {
         List<Note> noteList=mode.showNotes();
         return noteList;
@@ -30,7 +30,7 @@ public class NoteController {
         {
             return false;
         } else {
-            return mode.deleteNote(deletenote.getTitle());
+            return mode.deleteNote(deletenote.getTitle(),deletenote.getTime());
         }
 
     }

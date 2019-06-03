@@ -52,12 +52,14 @@
         android:focusableInTouchMode="true">
 
         <EditText
+            android:id="@+id/searchedit"
+            android:drawableLeft="@drawable/search"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:background="@drawable/shape_et"
-            android:textCursorDrawable="@null"
+            android:textCursorDrawable="@drawable/my_cursor"
             android:hint="搜索笔记"
-            android:paddingLeft="10dp"
+            android:paddingLeft="5dp"
             />
 
     </com.qmuiteam.qmui.layout.QMUILinearLayout>
@@ -84,7 +86,7 @@
 
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/addnote"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_alignParentRight="true"

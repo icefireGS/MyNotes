@@ -1,9 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvc.View.showNoteActivity">
+    tools:context=".mvc.View.showNoteActivity"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:layout_height="?attr/qmui_topbar_height"
+        android:layout_width="match_parent"
+        app:qmui_topbar_bg_color="@color/qmui_config_color_gray_9">
+
+        <ImageButton
+            android:id="@+id/backbutton"
+            android:layout_width="?attr/qmui_topbar_height"
+            android:layout_height="match_parent"
+            android:background="@color/qmui_config_color_gray_9"
+            android:src="@drawable/left_back"
+            android:scaleType="centerInside"/>
+
+        <TextView
+            android:id="@+id/notetitle"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:text="未命名"
+            android:layout_toRightOf="@+id/backbutton"/>
+
+        <ImageButton
+            android:id="@+id/savebutton"
+            android:layout_width="?attr/qmui_topbar_height"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/qmui_config_color_gray_9"
+            android:src="@drawable/right_edit"
+            android:scaleType="centerInside"/>
+
+
+    </com.qmuiteam.qmui.widget.QMUITopBar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/qmui_topbar_height"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="?attr/qmui_topbar_height"
+                android:layout_height="match_parent"
+                android:background="@color/qmui_config_color_white"
+                android:src="@drawable/left_title"/>
+
+            <TextView
+                android:id="@+id/addtitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="15sp"
+                android:text="添加标题  ▼"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/showtime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|right"
+            android:layout_marginRight="15dp"
+            android:textSize="15sp"
+            android:textColor="@color/qmui_config_color_gray_5"
+            android:text="0000/00/00  00:00"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editnote"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="textMultiLine"
+        android:gravity="left|top"
+        android:textCursorDrawable="@drawable/my_cursor"
+        android:focusable="false"
+        android:scrollbars="vertical"/>
+
+
+</LinearLayout>
