@@ -32,6 +32,7 @@ public class noteslistAdapter extends ArrayAdapter {
             holder=new ViewHolder();
             holder.titleText=(TextView) view.findViewById(R.id.notetitle);
             holder.dateText=(TextView) view.findViewById(R.id.notetime);
+            holder.puid=(TextView) view.findViewById(R.id.puid);
             view.setTag(holder);
         } else {
             view=convertView;
@@ -42,11 +43,13 @@ public class noteslistAdapter extends ArrayAdapter {
         String lasttime=time.format(item.getTime());
         holder.titleText.setText(item.getTitle());
         holder.dateText.setText(lasttime);
+        holder.puid.setText(String.valueOf(item.getTime()));
         return view;
     }
 
     class ViewHolder{
         TextView titleText;
         TextView dateText;
+        TextView puid;
     }
 }

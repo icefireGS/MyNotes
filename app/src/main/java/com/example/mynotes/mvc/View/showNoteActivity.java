@@ -24,6 +24,7 @@ public class showNoteActivity extends Activity {
     private TextView time;   //日期
     private boolean isEdit;     //是否编辑界面
     private EditText editnote;  //笔记编辑框
+    private TextView uid;   //笔记标志
     private NoteController controller; //笔记controller对象
     private NoteDataBaseHelper dbHelper;
 
@@ -41,6 +42,7 @@ public class showNoteActivity extends Activity {
         addTtile=findViewById(R.id.addtitle);
         time=findViewById(R.id.showtime);
         editnote=findViewById(R.id.editnote);
+        uid=findViewById(R.id.uid);
         dbHelper=new NoteDataBaseHelper(this,"db",1);
         controller=new NoteController(dbHelper);
 
@@ -72,7 +74,7 @@ public class showNoteActivity extends Activity {
         SimpleDateFormat settime = new SimpleDateFormat("yyyy/MM/dd  HH:mm:ss");
         String lasttime=settime.format(intentNote.getTime());
         time.setText(lasttime);
-
+        uid.setText(String.valueOf(intentNote.getTime()));
         editnote.setText(intentNote.getContent());
     }
 
@@ -82,12 +84,22 @@ public class showNoteActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if(isEdit){
+
                     Note newnote=new Note(title.getText().toString(),System.currentTimeMillis(),editnote.getText().toString());
                     controller.AddControl(newnote);
 
                     isEdit=false;
+                    save_edit.setImageResource(R.drawable.right_edit);
+                    editnote.setFocusable(false);
+                    editnote.setFocusableInTouchMode(false);
+                    addTtile.setVisibility(View.INVISIBLE);
                 }else{
                     isEdit=true;
+                    save_edit.setImageResource(R.drawable.right_save);
+                    editnote.setFocusableInTouchMode(true);
+                    editnote.setFocusable(true);
+                    editnote.requestFocus();
+                    addTtile.setVisibility(View.VISIBLE);
                 }
             }
         });

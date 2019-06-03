@@ -29,6 +29,15 @@
             android:text="未命名"
             android:layout_toRightOf="@+id/backbutton"/>
 
+        <TextView
+            android:id="@+id/uid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/notetitle"
+            android:layout_toLeftOf="@+id/savebutton"
+            android:text="00000000"
+            android:visibility="invisible"/>
+
         <ImageButton
             android:id="@+id/savebutton"
             android:layout_width="?attr/qmui_topbar_height"
