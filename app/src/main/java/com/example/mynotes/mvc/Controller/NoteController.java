@@ -34,5 +34,19 @@ public class NoteController {
         }
 
     }
-
+    public boolean UpdateControl(Note beforenote,Note afternote)
+    {
+        if(mode.showNotes().isEmpty())
+        {
+            return false;
+        }
+        else
+        {
+            return mode.UpdateNote(beforenote.getTitle(), beforenote.getTime(),afternote);
+        }
+    }
+public Note QueryControl(Note querynote)
+{
+    return mode.QuerryNote(querynote.getTitle(),querynote.getTime());
+}
 }
