@@ -49,4 +49,8 @@ public Note QueryControl(Note querynote)
 {
     return mode.QuerryNote(querynote.getTitle(),querynote.getTime());
 }
+public boolean IsExist(Note judgenote)
+{
+    return mode.IsExist(judgenote.getTitle(),judgenote.getTime());
+}
 }
