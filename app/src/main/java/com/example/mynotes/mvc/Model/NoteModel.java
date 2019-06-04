@@ -122,8 +122,11 @@ public class NoteModel {
         long time;
 
         Cursor cursor=db.query("NoteTable",new String[]{"title"},"title like ?",new String[]{"%"+p_title+"%"},null,null,null);
+        if(cursor.getCount()==0)
+        {
+            return  t_list;
+        }
         cursor.moveToFirst();
-
        do{
            title=cursor.getString(0);
            time=cursor.getLong(1);
