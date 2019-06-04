@@ -5,6 +5,7 @@
     android:background="@color/qmui_config_color_gray_9">
 
     <LinearLayout
+        android:id="@+id/item_click"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="15dp"
@@ -13,6 +14,8 @@
         android:layout_marginBottom="5dp"
         android:elevation="2dp"
         android:background="@drawable/shape_et"
+        android:clickable="true"
+        android:focusable="true"
         android:stateListAnimator="@drawable/selector_elevation"
         android:orientation="vertical">
 
@@ -37,7 +40,6 @@
             android:id="@+id/notetime"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="@drawable/shape_et"
             android:paddingLeft="6dp"
             android:textSize="12sp"
             android:textColor="@color/qmui_config_color_gray_5"

@@ -78,11 +78,11 @@
             android:src="@drawable/nonote"
             android:visibility="invisible"/>
 
-    <ListView
+    <com.yydcdut.sdlv.SlideAndDragListView
         android:id="@+id/noteslist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="?attr/qmui_topbar_height"></ListView>
+        android:layout_marginBottom="?attr/qmui_topbar_height"></com.yydcdut.sdlv.SlideAndDragListView>
 
 
         <com.github.clans.fab.FloatingActionButton

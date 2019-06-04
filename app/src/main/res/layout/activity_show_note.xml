@@ -61,6 +61,7 @@
             android:layout_weight="1">
 
             <ImageView
+                android:id="@+id/Timage"
                 android:layout_width="?attr/qmui_topbar_height"
                 android:layout_height="match_parent"
                 android:background="@color/qmui_config_color_white"
@@ -103,8 +104,10 @@
         android:id="@+id/editnote"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:inputType="textMultiLine"
+        android:inputType="textMultiLine|textNoSuggestions"
         android:gravity="left|top"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:textCursorDrawable="@drawable/my_cursor"
         android:focusable="false"
         android:scrollbars="vertical"/>
