@@ -33,6 +33,7 @@ public class showNoteActivity extends Activity {
     private EditText editnote;  //笔记编辑框
     private TextView uid;   //笔记标志
     private ImageView T;       //T图标
+    private Note Pnote;
     private NoteController controller; //笔记controller对象
     private NoteDataBaseHelper dbHelper;
 
@@ -88,6 +89,8 @@ public class showNoteActivity extends Activity {
         time.setText(lasttime);
         uid.setText(String.valueOf(intentNote.getTime()));
         editnote.setText(intentNote.getContent());
+
+        Pnote=new Note(title.getText().toString(),Long.parseLong(uid.getText().toString()),editnote.getText().toString());
     }
 
     void initListener(){
@@ -96,7 +99,6 @@ public class showNoteActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if(isEdit){
-                    Note Pnote=new Note(title.getText().toString(),Long.parseLong(uid.getText().toString()),editnote.getText().toString());
                     long nowtime=System.currentTimeMillis();
                     Note newnote = new Note(title.getText().toString(), nowtime, editnote.getText().toString());
                     uid.setText(String.valueOf(nowtime));
