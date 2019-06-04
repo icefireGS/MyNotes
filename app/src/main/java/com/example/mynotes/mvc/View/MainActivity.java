@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ public class MainActivity extends Activity implements ClickCallBack {
     private ImageButton showClocks;   //显示闹钟列表
     private NoteController controller; //笔记controller对象
     private MessageReceiver mr;       //广播注册类
+    private PopupMenu rightMenu;       //右侧菜单
     private NoteDataBaseHelper dbHelper;
 
     @Override
@@ -95,6 +97,9 @@ public class MainActivity extends Activity implements ClickCallBack {
         searchEdit.setCompoundDrawables(editdraw,null,null,null);
 
         autosetNoneView(R.drawable.nonote,true);
+
+        rightMenu = new PopupMenu(MainActivity.this,menu_right);
+        rightMenu.getMenuInflater().inflate(R.menu.menu_main, rightMenu.getMenu());
     }
 
     void initListener() {
@@ -139,7 +144,25 @@ public class MainActivity extends Activity implements ClickCallBack {
         menu_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                rightMenu.show();
+            }
+        });
 
+        rightMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(android.view.MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.upload:
+                        Toast.makeText(MainActivity.this, "导入按钮", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.switch_view:
+                        Toast.makeText(MainActivity.this, "切换视图按钮", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.mul_delete:
+                        Toast.makeText(MainActivity.this, "批量删除按钮", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return false;
             }
         });
 
@@ -185,8 +208,6 @@ public class MainActivity extends Activity implements ClickCallBack {
         intent.putExtra("isedit",false);
         startActivity(intent);
     }
-
-
 
     public class MessageReceiver extends BroadcastReceiver {
         @Override
