@@ -120,9 +120,10 @@ public class NoteModel {
         List<Note> t_list=new ArrayList();
         String title,content;
         long time;
-        Cursor cursor=db.rawQuery("select * from NoteTable where title like ?",new String[]{"'%"+p_title+"%'"});
+        Cursor cursor=db.rawQuery("select * from NoteTable where title like ?",new String[]{"%"+p_title+"%"});
         if(cursor.getCount()==0)
         {
+            cursor.close();
             return  t_list;
         }
         cursor.moveToFirst();
@@ -132,7 +133,7 @@ public class NoteModel {
            content=cursor.getString(2);
            t_list.add(new Note(title,time,content));
        }while(cursor.moveToNext());
-
+       cursor.close();
        return t_list;
     }
 
@@ -149,6 +150,7 @@ public class NoteModel {
         i=cursor.getCount();
         if(i==0)
         {
+            cursor.close();
             return list;
         }
         while(i>0)
