@@ -53,4 +53,9 @@ public boolean IsExist(Note judgenote)
 {
     return mode.IsExist(judgenote.getTitle(),judgenote.getTime());
 }
+public List<Note> FuzzyControl(String title)
+{
+    return mode.FuzzyQuery(title);
+
+}
 }
