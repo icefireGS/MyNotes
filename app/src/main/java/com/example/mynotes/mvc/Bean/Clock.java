@@ -1,32 +1,35 @@
 package com.example.mynotes.mvc.Bean;
 
 public class Clock {
-    private String name;//闹钟名字
-    private String content;//闹钟内容
+    private String title;//闹钟标题
+    private int m_switch;//闹钟开关
     private MyDate mydate;//闹钟时间
+    private long time;//创建时间
 
-    public Clock(String name,String content,MyDate mydate)
+    public Clock(String title,int sw,MyDate mydate)
     {
-        this.name=name;
-        this.content=content;
+        this.title=title;
+        this.m_switch=sw;
         this.mydate=mydate;
+        this.time=System.currentTimeMillis();
     }
 
     public Clock()
     {
-        this.name=null;
-        this.content=null;
+        this.title=null;
+        this.m_switch=0;
         mydate=new MyDate();
+        this.time=System.currentTimeMillis();
     }
 
-    public String GetName()//获取闹钟名字
+    public String GetTitle()//获取闹钟名字
     {
-        return this.name;
+        return this.title;
     }
 
-    public String GetContent()//获取闹钟类容
+    public int GetSwitch()//获取闹钟类容
     {
-        return this.content;
+        return this.m_switch;
     }
 
     public MyDate GetDate()//获取闹钟时间
@@ -34,14 +37,19 @@ public class Clock {
         return  this.mydate;
     }
 
-    public void SetName(String name)//设置闹钟名字
+    public long GetTime()//获取创建时间
     {
-        this.name=name;
+        return this.time;
     }
 
-    public void SetContent(String content)//设置闹钟内容
+    public void SetTitle(String title)//设置闹钟名字
     {
-        this.content=content;
+        this.title=title;
+    }
+
+    public void SetSwitch(int sw)//设置闹钟内容
+    {
+        this.m_switch=sw;
     }
 
     public void SetDate(MyDate date)//设置闹钟时间
