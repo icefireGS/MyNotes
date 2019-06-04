@@ -75,7 +75,7 @@ public class NoteModel {
         return true;
     }
 
-    public boolean IsExist(String title,long time)
+    public boolean IsExist(String title,long time)//是否存在
     {
         if(!db.isOpen())
         {
@@ -91,7 +91,7 @@ public class NoteModel {
             return true;
     }
 
-    public Note QuerryNote(String title,long time)
+    public Note QuerryNote(String title,long time)//准确查询
     {
         if(!db.isOpen())
         {
@@ -109,6 +109,29 @@ public class NoteModel {
         note.setTime(cursor.getLong(1));
         note.setContent(cursor.getString(2));
         return note;
+    }
+
+    public List<Note> FuzzyQuery(String p_title)//模糊查询
+    {
+        if(!db.isOpen())
+        {
+            dbHelper.getReadableDatabase();
+        }
+        List<Note> t_list=new ArrayList();
+        String title,content;
+        long time;
+
+        Cursor cursor=db.query("NoteTable",new String[]{"title"},"title like ?",new String[]{"%"+p_title+"%"},null,null,null);
+        cursor.moveToFirst();
+
+       do{
+           title=cursor.getString(0);
+           time=cursor.getLong(1);
+           content=cursor.getString(2);
+           t_list.add(new Note(title,time,content));
+       }while(cursor.moveToNext());
+
+       return t_list;
     }
 
     public List<Note> showNotes()//将数据库的信息装入实体类加入列表
