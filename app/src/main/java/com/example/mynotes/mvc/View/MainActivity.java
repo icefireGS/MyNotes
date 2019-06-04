@@ -7,6 +7,8 @@ import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.app.Activity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -36,6 +38,7 @@ public class MainActivity extends Activity implements ClickCallBack {
     private noteslistAdapter adapter;  //笔记列表项适配器
     private SlideAndDragListView notesView;   //笔记列表视窗
     private ImageView listnone;   //暂无图片
+    private ImageView querynone;  //无搜索结果
     private boolean isNoteView;   //笔记界面或闹钟界面标志
     private ImageButton menu_left;    //左侧菜单
     private TextView toptile;     //标题栏
@@ -84,6 +87,7 @@ public class MainActivity extends Activity implements ClickCallBack {
 
     void initView(){
         listnone=findViewById(R.id.listnone);
+        querynone=findViewById(R.id.querynone);
         menu_left=findViewById(R.id.menulist);
         toptile=findViewById(R.id.toptitle);
         menu_right=findViewById(R.id.rightlist);
@@ -166,6 +170,35 @@ public class MainActivity extends Activity implements ClickCallBack {
             }
         });
 
+        searchEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String query_s=s.toString();
+                notesList.clear();
+                notesList=controller.FuzzyControl(query_s);
+                if(notesList.isEmpty()){
+                    querynone.setVisibility(View.VISIBLE);
+                } else {
+                    querynone.setVisibility(View.INVISIBLE);
+                }
+                adapter.notifyDataSetChanged();
+                if(query_s.equals("")){
+                    querynone.setVisibility(View.INVISIBLE);
+                    updateListView(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
     }
 
     //自动设置暂无图片
@@ -221,5 +254,18 @@ public class MainActivity extends Activity implements ClickCallBack {
         }
     }
 
+    void updateListView(boolean isNoteView){
+        if(isNoteView) {
+            notesList.clear();
+            notesList = controller.showNotes();
+            adapter.notifyDataSetChanged();
+            autosetNoneView(R.drawable.nonote, true);
+        } else {
+            clocksList.clear();
+            //clockList=controller.showClocks();
+            //cAdapter.notifyDataSetChanged();
+            //autosetNoneView(R.drawable.noclock,false);
+        }
+    }
 
 }
