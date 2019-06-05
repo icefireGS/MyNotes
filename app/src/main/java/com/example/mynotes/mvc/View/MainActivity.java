@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.app.Activity;
+import android.provider.AlarmClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -45,6 +46,7 @@ public class MainActivity extends Activity implements ClickCallBack {
     private List<Clock>  clocksList=new ArrayList<>();  //闹钟列表
     private noteslistAdapter adapter;  //笔记列表项适配器
     private SlideAndDragListView notesView;   //笔记列表视窗
+    private SlideAndDragListView clockView;   //
     private ImageView listnone;   //暂无图片
     private ImageView querynone;  //无搜索结果
     private boolean isNoteView;   //笔记界面或闹钟界面标志
@@ -139,6 +141,11 @@ public class MainActivity extends Activity implements ClickCallBack {
                     intent.putExtra("note", newnote);
                     intent.putExtra("isedit", true);
                     startActivity(intent);
+                }
+                else
+                {
+                    Intent alarms = new Intent(AlarmClock.ACTION_SET_ALARM);
+                    startActivity(alarms);
                 }
             }
         });
